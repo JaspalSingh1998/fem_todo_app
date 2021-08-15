@@ -106,7 +106,12 @@ input {
 .completed .checked-todo {
   background: linear-gradient(#57ddff, #c058f3);
 }
-
+.check-icon {
+  display: none;
+}
+.show {
+  display: block;
+}
 .delete-todo {
   margin-left: auto;
   height: 14px;
