@@ -24,7 +24,9 @@ h2,
 h3 {
   margin: 0;
 }
-
+ul {
+  list-style: none;
+}
 header {
   background: url("../images/bg-mobile-dark.jpg");
   background-repeat: no-repeat;
@@ -45,7 +47,7 @@ header {
 }
 .input-wrapper {
   display: flex;
-  background-color: var(--veryDarkGrayishBlue);
+  background-color: var(--veryDarkDesaturatedBlue);
   padding: 1rem 2rem;
   border-radius: 5px;
 }
@@ -54,6 +56,9 @@ header {
   height: 24px;
   border-radius: 50%;
   border: 1px solid gray;
+}
+form {
+  flex: 1;
 }
 input {
   width: 100%;
@@ -65,10 +70,94 @@ input {
   outline: none;
   color: var(--lightGrayishBlue);
 }
+.output {
+  padding: 3rem 2rem;
+  height: calc(100vh - 240px);
+  background-color: var(--darkBlue);
+}
+.output-box {
+  background-color: var(--veryDarkDesaturatedBlue);
+  transform: translateY(-5rem);
+  color: var(--lightGrayishBlue);
+}
+.todo-item {
+  padding: 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  border-bottom: 1px solid #efefef33;
+  cursor: pointer;
+}
+.todo-item:hover {
+  color: var(--hover);
+}
+.checked-todo {
+  margin-right: 1rem;
+  height: 20px;
+  width: 20px;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #efefef33;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.completed .checked-todo {
+  background: linear-gradient(#57ddff, #c058f3);
+}
 
+.delete-todo {
+  margin-left: auto;
+  height: 14px;
+  cursor: pointer;
+}
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.desc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 1rem;
+}
+.count,
+.clear {
+  opacity: 0.5;
+  font-size: 12px;
+}
+.clear {
+  cursor: pointer;
+}
+.filter {
+  transform: translateY(-3rem);
+  background-color: var(--veryDarkDesaturatedBlue);
+  padding: 1.5rem 1rem;
+  border-radius: 5px;
+}
+.filter ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: var(--lightGrayishBlue);
+  font-weight: 700;
+}
+.active {
+  color: hsl(220, 98%, 61%);
+}
+.info {
+  text-align: center;
+  color: var(--lightGrayishBlue);
+  transform: translateY(-1rem);
+}
+.desktop-filter {
+  display: none;
+}
 @media screen and (min-width: 640px) {
   .container {
-    max-width: 760px;
+    max-width: 500px;
     width: 100%;
     margin: 0 auto;
   }
@@ -77,5 +166,17 @@ input {
     background: url("../images/bg-desktop-dark.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+  }
+  .filter {
+    display: none;
+  }
+  .info {
+    transform: translateY(-2rem);
+  }
+  .desktop-filter {
+    display: flex;
+    gap: 1rem;
+    opacity: 0.7;
+    font-size: 12px;
   }
 }
