@@ -38,6 +38,7 @@
               name="todo"
               id="input"
               placeholder="Create a new todo.."
+              autocomplete="off"
             />
           </form>
         </div>
@@ -45,113 +46,16 @@
     </header>
     <section class="output">
       <div class="container output-box">
-        <ul class="todo-list">
-          <li class="todo-item">
-            <div class="checked-todo">
-              <img
-                src="./images/icon-check.svg"
-                alt="Checked"
-                class="check-icon"
-              />
-            </div>
-            Complete Online Javascript course
-            <img
-              src="./images/icon-cross.svg"
-              alt="Delete Todo"
-              class="delete-todo"
-            />
-          </li>
-          <li class="todo-item">
-            <div class="checked-todo">
-              <img
-                src="./images/icon-check.svg"
-                alt="Checked"
-                class="check-icon"
-              />
-            </div>
-
-            Jog around park 3x
-            <img
-              src="./images/icon-cross.svg"
-              alt="Delete Todo"
-              class="delete-todo"
-            />
-          </li>
-
-          <li class="todo-item">
-            <div class="checked-todo">
-              <img
-                src="./images/icon-check.svg"
-                alt="Checked"
-                class="check-icon"
-              />
-            </div>
-
-            10 minutes of meditation
-            <img
-              src="./images/icon-cross.svg"
-              alt="Delete Todo"
-              class="delete-todo"
-            />
-          </li>
-
-          <li class="todo-item">
-            <div class="checked-todo">
-              <img
-                src="./images/icon-check.svg"
-                alt="Checked"
-                class="check-icon"
-              />
-            </div>
-
-            Read for 1 hour
-            <img
-              src="./images/icon-cross.svg"
-              alt="Delete Todo"
-              class="delete-todo"
-            />
-          </li>
-          <li class="todo-item">
-            <div class="checked-todo">
-              <img
-                src="./images/icon-check.svg"
-                alt="Checked"
-                class="check-icon"
-              />
-            </div>
-
-            Pick fruits
-            <img
-              src="./images/icon-cross.svg"
-              alt="Delete Todo"
-              class="delete-todo"
-            />
-          </li>
-          <li class="todo-item">
-            <div class="checked-todo">
-              <img
-                src="./images/icon-check.svg"
-                alt="Checked"
-                class="check-icon"
-              />
-            </div>
-            Complete Todo app on frontendmentor
-            <img
-              src="./images/icon-cross.svg"
-              alt="Delete Todo"
-              class="delete-todo"
-            />
-          </li>
-          <div class="desc">
-            <p class="count">5 items left</p>
-            <ul class="desktop-filter">
-              <li class="active">All</li>
-              <li>Active</li>
-              <li>Completed</li>
-            </ul>
-            <p class="clear">Clear Completed</p>
-          </div>
-        </ul>
+        <ul class="todo-list"></ul>
+        <div class="desc">
+          <p class="count">5 items left</p>
+          <ul class="desktop-filter">
+            <li class="active all-todos">All</li>
+            <li class="active-todos">Active</li>
+            <li class="active-completed">Completed</li>
+          </ul>
+          <p class="clear">Clear Completed</p>
+        </div>
       </div>
       <div class="filter">
         <ul>
@@ -160,7 +64,27 @@
           <li>Completed</li>
         </ul>
       </div>
-      <p class="info">Drag and drop to reorder list</p>
+      <!-- <p class="info">Drag and drop to reorder list</p> -->
     </section>
+
+    <template id="todo-item-template">
+      <li class="todo-item">
+        <div data-check-icon-wrapper class="checked-todo">
+          <img
+            data-check-icon
+            src="./images/icon-check.svg"
+            alt="Checked"
+            class="check-icon"
+          />
+        </div>
+        <span class="todo-text"></span>
+        <img
+          src="./images/icon-cross.svg"
+          alt="Delete Todo"
+          class="delete-todo"
+          data-button-delete
+        />
+      </li>
+    </template>
   </body>
 </html>

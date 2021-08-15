@@ -72,7 +72,7 @@ input {
 }
 .output {
   padding: 3rem 2rem;
-  height: calc(100vh - 240px);
+  min-height: calc(100vh - 240px);
   background-color: var(--darkBlue);
 }
 .output-box {
@@ -109,9 +109,7 @@ input {
 .check-icon {
   display: none;
 }
-.show {
-  display: block;
-}
+
 .delete-todo {
   margin-left: auto;
   height: 14px;
