@@ -1,6 +1,15 @@
 const todoInput = document.querySelector("#input");
 const list = document.querySelector(".todo-list");
 const template = document.querySelector("#todo-item-template");
+const activeEl = document.querySelector(".active-todos");
+const allEl = document.querySelector(".all-todos");
+const completedEl = document.querySelector(".active-completed");
+const mobileActiveEl = document.querySelector(".mobile-active-todos");
+const mobileAllEl = document.querySelector(".mobile-all-todos");
+const mobileCompletedEl = document.querySelector(".mobile-active-completed");
+const clear = document.querySelector(".clear");
+const count = document.querySelector(".count");
+let itemC = 0;
 const LOCAL_STORAGE_PREFIX = "FEM_TODO_LIST";
 const TODOS_STORAGE_KEY = `${LOCAL_STORAGE_PREFIX}-todos`;
 let todos = loadTodos();
@@ -31,6 +40,8 @@ list.addEventListener("click", (e) => {
   const todoId = parent.dataset.todoId;
   parent.remove();
   todos = todos.filter((todo) => todo.id !== todoId);
+  updateCount();
+
   saveTodo();
 });
 
@@ -48,6 +59,7 @@ list.addEventListener("click", (e) => {
     parent.classList.remove("completed");
     parent.children[0].children[0].classList.add("check-icon");
   }
+  updateCount();
 
   saveTodo();
 });
@@ -63,6 +75,8 @@ function renderTodo(todo) {
     listItem.classList.add("completed");
   }
   list.appendChild(templateClone);
+
+  updateCount();
 }
 
 function saveTodo() {
@@ -91,17 +105,45 @@ function completedTodo() {
   completedTodos.forEach(renderTodo);
 }
 
-const activeEl = document.querySelector(".active-todos");
 activeEl.addEventListener("click", (e) => {
   activeTodo();
 });
 
-const allEl = document.querySelector(".all-todos");
 allEl.addEventListener("click", (e) => {
   allTodo();
 });
 
-const completedEl = document.querySelector(".active-completed");
 completedEl.addEventListener("click", (e) => {
   completedTodo();
 });
+
+mobileActiveEl.addEventListener("click", (e) => {
+  activeTodo();
+});
+
+mobileAllEl.addEventListener("click", (e) => {
+  allTodo();
+});
+
+mobileCompletedEl.addEventListener("click", (e) => {
+  completedTodo();
+});
+
+function removeCompleted() {
+  todos = todos.filter((todo) => todo.complete === false);
+  list.innerHTML = "";
+
+  todos.forEach(renderTodo);
+  saveTodo();
+}
+
+clear.addEventListener("click", (e) => {
+  removeCompleted();
+});
+
+function updateCount() {
+  actives = todos.filter((todo) => todo.complete === false);
+  itemC = actives.length;
+
+  count.textContent = `${itemC} items left`;
+}
