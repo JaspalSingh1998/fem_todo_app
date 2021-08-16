@@ -138,6 +138,7 @@ input {
   background-color: var(--veryDarkDesaturatedBlue);
   padding: 1.5rem 1rem;
   border-radius: 5px;
+  cursor: pointer;
 }
 .filter ul {
   display: flex;
@@ -156,6 +157,7 @@ input {
   transform: translateY(-1rem);
 }
 .desktop-filter {
+  cursor: pointer;
   display: none;
 }
 @media screen and (min-width: 640px) {

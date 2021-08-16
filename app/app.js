@@ -73,3 +73,35 @@ function loadTodos() {
   const todoStrings = localStorage.getItem(TODOS_STORAGE_KEY);
   return JSON.parse(todoStrings) || [];
 }
+
+function activeTodo() {
+  list.innerHTML = "";
+  let activeTodos = todos.filter((entry) => entry.complete !== true);
+  activeTodos.forEach(renderTodo);
+}
+
+function allTodo() {
+  list.innerHTML = "";
+  todos.forEach(renderTodo);
+}
+
+function completedTodo() {
+  list.innerHTML = "";
+  let completedTodos = todos.filter((entry) => entry.complete !== false);
+  completedTodos.forEach(renderTodo);
+}
+
+const activeEl = document.querySelector(".active-todos");
+activeEl.addEventListener("click", (e) => {
+  activeTodo();
+});
+
+const allEl = document.querySelector(".all-todos");
+allEl.addEventListener("click", (e) => {
+  allTodo();
+});
+
+const completedEl = document.querySelector(".active-completed");
+completedEl.addEventListener("click", (e) => {
+  completedTodo();
+});
